@@ -1,0 +1,92 @@
+# Operating System Files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+*.swp
+*~
+
+# IDE and Editor Files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.classpath
+.settings/
+*.iml
+.vs/
+
+# Dependencies and Package Managers
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+vendor/
+composer.lock
+bower_components/
+
+# Build and Compiled Files
+dist/
+build/
+out/
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+__pycache__/
+*.pyo
+
+# Environment and Configuration
+.env
+.env.local
+.env.*.local
+.env.development
+.env.test
+.env.production
+config/secrets.yml
+*.key
+*.pem
+
+# Logs and Databases
+*.log
+logs/
+*.sql
+*.sqlite
+*.db
+
+# Testing
+coverage/
+.coverage
+*.cover
+.pytest_cache/
+.phpunit.result.cache
+
+# Temporary Files
+tmp/
+temp/
+cache/
+*.tmp
+*.temp
+*.cache
+
+# Project Specific (adjust as needed)
+uploads/
+public/uploads/
+storage/
+.sass-cache/
+
+# Documentation
+docs/_build/
+site/

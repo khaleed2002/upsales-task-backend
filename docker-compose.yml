@@ -1,0 +1,16 @@
+services:
+    mysql:
+        image: mysql:8.0
+        container_name: movies_db
+        environment:
+            MYSQL_ROOT_PASSWORD: rootpassword
+            MYSQL_DATABASE: movies_tv_shows
+            MYSQL_USER: dbuser
+            MYSQL_PASSWORD: dbpassword
+        ports:
+            - "3306:3306"
+        volumes:
+            - mysql_data:/var/lib/mysql
+
+volumes:
+    mysql_data:

@@ -1,0 +1,60 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String         @id @default(uuid())
+  email         String         @unique
+  password      String
+  name          String?
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
+  
+  entries       Entry[]
+  refreshTokens RefreshToken[]
+}
+
+model Entry {
+  id          String   @id @default(uuid())
+  title       String
+  type        EntryType
+  director    String
+  budget      String
+  location    String
+  duration    String
+  yearTime    String
+  description String?  @db.Text
+  imageUrl    String?  @db.Text
+  
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  
+  @@index([userId])
+  @@index([type])
+  @@index([createdAt])
+}
+
+model RefreshToken {
+  id          String   @id @default(uuid())
+  token       String   @unique @db.VarChar(500)
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt   DateTime
+  createdAt   DateTime @default(now())
+  
+  @@index([userId])
+  @@index([token])
+}
+
+enum EntryType {
+  MOVIE
+  TV_SHOW
+}
