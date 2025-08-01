@@ -1,5 +1,6 @@
 import jwt, { Jwt, Secret, SignOptions } from "jsonwebtoken";
 import { User } from "@prisma/client";
+import crypto from "crypto";
 
 // Ensure environment variables are properly typed
 const JWT_SECRET: Secret = process.env.JWT_SECRET || "your-secret-key";
@@ -17,6 +18,8 @@ export const generateTokens = (user: User) => {
     const payload = {
         userId: user.id,
         email: user.email,
+        iat: Math.floor(Date.now() / 1000), // Current timestamp
+        jti: crypto.randomUUID(), // Unique token ID
     };
 
     const signOptions: SignOptions = {
