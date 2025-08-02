@@ -1,6 +1,6 @@
 # Upsales Task Backend
 
-This repository contains the backend for the Upsales Task. It is built using Node.js, TypeScript, and Prisma ORM. Below are the instructions to set up and run the project.
+This repository contains the backend for the Upsales Task. It is built using Node.js, TypeScript, and Prisma ORM.
 
 ## Prerequisites
 
@@ -12,67 +12,61 @@ Before you begin, ensure you have the following installed on your system:
 
 ## Setup Instructions
 
-### Backend Setup
-
-1. Clone the repository:
+1. **Clone the repository:**
 
     ```bash
     git clone https://github.com/khaleed2002/upsales_task_backend.git
     cd upsales_task_backend/
     ```
 
-2. Install dependencies:
+2. **Install dependencies:**
 
     ```bash
     yarn install
     ```
 
-3. Create a `.env` file in the root directory and configure it. You can use the provided `.env` file as a reference:
+3. **Create environment file:**
 
     ```bash
     cp .env.example .env
     ```
 
-4. Start the database using Docker Compose:
+4. **Start the database:**
 
     ```bash
     yarn db:start
     ```
 
-5. Run database migrations:
+5. **Wait for database to be ready (important!):**
 
     ```bash
-    npx prisma migrate dev
+    sleep 15
     ```
 
-6. Seed the database (if applicable):
+6. **Run database migrations:**
+
+    ```bash
+    yarn migrate:dev
+    ```
+
+7. **Seed the database:**
 
     ```bash
     yarn seed
     ```
 
-7. Start the development server:
+8. **Start the development server:**
     ```bash
     yarn dev
     ```
 
-### Frontend Setup
+## Quick Setup (Alternative)
 
-The backend is designed to work with a frontend client. Ensure the `CLIENT_URL` in the `.env` file points to the correct frontend URL. For example:
-
-```env
-CLIENT_URL=http://localhost:5173
-```
-
-## Demo Credentials and Seed Data
-
-If authentication is implemented, you can use the following demo credentials:
-
--   **Email:** test@example.com
--   **Password:** password123
-
-The seed data is located in `prisma/seed.ts` and `mock/movies-data.json`. To seed the database, run:
+Run everything at once:
 
 ```bash
-npx ts-node prisma/seed.ts
+yarn install
+cp .env.example .env (and configure env)
+yarn setup
+yarn dev
 ```
