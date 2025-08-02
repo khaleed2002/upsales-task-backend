@@ -5,9 +5,12 @@
     "type": "module",
     "scripts": {
         "build": "tsc",
+        "setup": "yarn db:start && echo 'Waiting for database to be ready...' && sleep 8 && yarn migrate:dev && yarn seed",
         "start": "node dist/server.js",
         "db:start": "docker-compose up -d",
-        "db:migrate": "npx prisma migrate dev",
+        "db:stop": "docker-compose down",
+        "db:reset": "docker-compose down -v --remove-orphans",
+        "migrate:dev": "npx prisma migrate dev",
         "dev": "nodemon",
         "seed": "tsx prisma/seed.ts"
     },
