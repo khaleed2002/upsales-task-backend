@@ -90,3 +90,4 @@ storage/
 # Documentation
 docs/_build/
 site/
+.env.docker
