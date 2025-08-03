@@ -1,9 +1,8 @@
 import express from "express";
 import cookieParser from "cookie-parser";
 import cors from "cors";
-import { prisma } from "./lib/prisma.js";
 import authRoutes from "./routes/auth.router.js";
-import { authenticate, AuthRequest } from "./middlewares/auth.js";
+import { authenticate } from "./middlewares/auth.js";
 import entryRoutes from "./routes/entry.router.js";
 const app = express();
 const PORT = process.env.PORT || 3000;
